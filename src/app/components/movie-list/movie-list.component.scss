@@ -1,0 +1,103 @@
+.container {
+  margin: 0 auto;     /* Center the content horizontally */
+  margin-left: 214px;
+  margin-right: 214px;
+  padding: 0 15px;
+}
+
+.title {
+  margin-top: 24px;
+  text-align: left;
+  font: normal normal normal 24px Roboto;
+  letter-spacing: 0px;
+  color: #386071;
+  opacity: 1;
+  font-size: 24px;
+}
+
+.filter-section {
+  margin: 32px 0px;
+  display: flex;
+  gap: 16px;
+}
+
+.filter-button {
+  border: 1px solid #78849E66;
+  border-radius: 20px;
+  opacity: 1;
+  background-color: #FFFFFF;
+  color: #78849E;
+  text-align: center;
+  font: normal normal 300 12px Roboto;
+  letter-spacing: 0px;
+  padding: 8px 12px;
+}
+
+.filter-button:hover {
+  background-color: #e8e8e8;
+}
+
+// MOVIE TABLE
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 1px solid #0B749B99;
+}
+td {
+  border-bottom: 1px solid #9AAEBB66;
+}
+
+.header-row {
+  text-align: left;
+  font: normal normal bold 10px/20px Roboto;
+  letter-spacing: 0px;
+  color: #0B749B;
+  opacity: 1;
+  text-transform: uppercase;
+}
+
+.movie-row {
+  text-align: left;
+  font: normal normal normal 16px/20px Roboto;
+  letter-spacing: 0px;
+  color: #536B7A;
+  opacity: 1;
+  height: 48px;
+}
+
+.movie-row:hover {
+  background-color: #fafafa;
+  cursor: pointer;
+}
+
+.ranking-column {
+  width: 10%;
+  text-align: center;
+}
+
+.title-column {
+  width: 50%;
+}
+
+.year-column {
+  width: 15%;
+}
+
+.revenue-column {
+  width: 20%;
+}
+
+.eye-column {
+  width: 5%;
+  color: #9AAEBB;
+}
+
+.loading-container {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

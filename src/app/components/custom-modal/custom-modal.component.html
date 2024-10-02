@@ -1,0 +1,66 @@
+<div class="modal" [class.show]="isVisible" (click)="onOverlayClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    
+    <div *ngIf="loading" class="loading-container">
+      <img alt="Loading SVG" src="assets/svg/loading.svg">
+    </div>
+
+    <div *ngIf="!loading && movie !== null">
+      <!-- HEADER -->
+      <div class="header">
+        <h1 class="movie-title">{{ movie.title }}</h1>
+        <fa-icon class="close" (click)="closeModal()" [icon]="faClose"></fa-icon>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="header-blue-border"></div>
+
+      <!-- MOVIE DETAILS -->
+      <!-- YEAR -->
+      <p class="movie-columns">Year</p>
+      <p class="movie-info">{{ movie.year }}</p>
+
+      <!-- GENRE -->
+      <p class="movie-columns">Genre</p>
+      <p class="movie-info">{{ movie.genre }}</p>
+
+      <!-- DESCRIPTION -->
+      <p class="movie-columns">Description</p>
+      <p class="movie-info">{{ movie.description }}</p>
+
+      <div class="flex">
+        <!-- DIRECTOR -->
+        <div>
+          <p class="movie-columns">Director</p>
+          <p class="movie-info-blue">{{ movie.director }}</p>
+        </div>
+        <!-- ACTORS -->
+        <div>
+          <p class="movie-columns">Actors</p>
+          <p class="movie-info-blue">{{ movie.actors }}</p>
+        </div>
+
+      </div>
+
+      <!-- RUNTIME -->
+      <p class="movie-columns">Runtime</p>
+      <p class="movie-info">{{ movie.runtime }}</p>
+
+      <!-- RATING -->
+      <p class="movie-columns">Rating</p>
+      <p class="movie-info">{{ movie.rating }}</p>
+
+      <!-- VOTES -->
+      <p class="movie-columns">Votes</p>
+      <p class="movie-info">{{ movie.votes }}</p>
+
+      <!-- REVENUE -->
+      <p class="movie-columns">Revenue</p>
+      <p class="movie-info">${{ movie.revenue }}</p>
+
+      <!-- METASCORE -->
+      <p class="movie-columns">Metascore</p>
+      <p class="movie-info">{{ movie.metascore }}</p>    
+    </div>
+  </div>
+</div>

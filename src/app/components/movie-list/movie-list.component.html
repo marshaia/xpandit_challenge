@@ -1,0 +1,46 @@
+<main class="container">
+  <!-- PAGE TITLE -->
+  <h2 class="title">Movie ranking</h2>
+
+
+  <!-- FILTER SECTION -->
+  <section class="filter-section">
+    <button title="Top 10 Revenue" class="filter-button">
+      Top 10 Revenue
+    </button>
+
+    <button title="Top 10 Revenue per Year" class="filter-button">
+      Top 10 Revenue per Year
+    </button>
+  </section>
+  
+
+  <div *ngIf="loading" class="loading-container">
+    <img alt="Loading SVG" src="assets/svg/loading.svg">
+  </div>
+
+  <!-- MOVIE TABLE -->
+  <table *ngIf="!loading">
+    <tr class="header-row">
+      <th class="ranking-column">RANKING</th>
+      <th class="movie-column">TITLE</th>
+      <th class="year-column">YEAR</th>
+      <th class="revenue-column">REVENUE</th>
+      <th class="eye-column"></th>
+    </tr>
+
+    <tr 
+      class="movie-row"
+      *ngFor="let movie of (page_movie === null ? [] : page_movie.content)"
+      (click)="clicked_movie(movie.id)"
+    >
+      <td class="ranking-column">{{movie.rank}}</td>
+      <td class="movie-column">{{movie.title}}</td>
+      <td class="year-column">{{movie.year}}</td>
+      <td class="revenue-column">${{movie.revenue}}</td>
+      <td class="eye-column"><fa-icon [icon]="faEye"></fa-icon></td>
+    </tr>   
+  </table>
+
+  <app-custom-modal [isVisible]="showModal" [movie_id]="movie_id" (close)="showModal = false; movie_id = null"></app-custom-modal>
+</main>
