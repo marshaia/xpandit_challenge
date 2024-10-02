@@ -9,7 +9,13 @@
       <!-- HEADER -->
       <div class="header">
         <h1 class="movie-title">{{ movie.title }}</h1>
-        <fa-icon class="close" (click)="closeModal()" [icon]="faClose"></fa-icon>
+        <div class="close">
+          <div class="close-hover-flex ">
+            <p class="hidden-close">CLOSE</p>
+            <fa-icon class="close-icon" (click)="closeModal()" [icon]="faClose"></fa-icon>
+          </div>
+          <p class="show-close">CLOSE</p>
+        </div>
       </div>
 
       <!-- DIVIDER -->

@@ -31,13 +31,13 @@ export class MovieListComponent implements OnInit {
   }
 
   fetchAllMovies(): void {
-    this.apiService.getMovies<PageMovie>()
-      .subscribe({
-        next: (data) => {
-          this.loading = false;
-          this.page_movie = data;
-        },
-        error: () => window.alert("Error fetching movies. Please try again!")
+    this.apiService.getMovies<{data: PageMovie}>()
+      .then(response => { 
+        this.loading = false
+        this.page_movie = response.data
+      })
+      .catch(() => { 
+        window.alert("Error fetching movies. Please try again!") 
       });
   }
 

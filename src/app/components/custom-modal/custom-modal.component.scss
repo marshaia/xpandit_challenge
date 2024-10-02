@@ -35,16 +35,56 @@
   overflow-y: auto;
 }
 
-.close {
-  color: #718FA2;
-  // float: right;
-  font-size: 20px;
+.close-hover-flex {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
 }
 
-.close:hover,
-.close:focus {
+.hidden-close {
+  visibility: hidden;
+  font: normal normal normal 8px/16px Roboto;
+  letter-spacing: 0.64px;
+  color: black;
+  opacity: 1;
+  margin: 0px;
+}
+
+.show-close {
+  visibility: visible;
+  text-align: right;
+  font: normal normal normal 8px/16px Roboto;
+  letter-spacing: 0.64px;
+  color: #718FA2;
+  opacity: 1;
+  margin: 0px;
+}
+
+.close {
+  color: #718FA2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.close-icon {
+  margin-right: 8px;
+}
+
+
+.close:hover, .close:focus {
   color: black;
   cursor: pointer;
+  .hidden-close {
+    visibility: visible;
+  }
+  .show-close {
+    visibility: hidden;
+  }
 }
 
 .header {

@@ -14,12 +14,14 @@ import { ApiService } from '../../services/api.service';
 })
 export class CustomModalComponent implements OnChanges {
   faClose = faX
-  movie: DetailedMovie | null = null;
   loading = false;
+  movie: DetailedMovie | null = null;
+
   @Input() isVisible = false;
   @Input() movie_id: string | null = null;
   @Output() close = new EventEmitter<void>();
 
+  
   constructor(private apiService: ApiService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,17 +30,15 @@ export class CustomModalComponent implements OnChanges {
 
   fetchMovie(): void {
     this.loading = true;
-    this.apiService.getMovie<DetailedMovie>(this.movie_id ?? "")
-      .subscribe({
-        next: (data) => {
-          this.loading = false;
-          this.movie = data;
-        },
-        error: () => {
-          this.close.emit()
-          window.alert("Error fetching movie")
-        }
-    });
+    this.apiService.getMovie<{data: DetailedMovie}>(this.movie_id ?? "")
+      .then(response => {
+        this.loading = false;
+        this.movie = response.data;
+      })
+      .catch(() => {
+        this.close.emit()
+        window.alert("Error fetching movie")
+      });
   }
 
   closeModal() {

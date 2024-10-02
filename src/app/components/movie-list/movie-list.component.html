@@ -34,10 +34,10 @@
       *ngFor="let movie of (page_movie === null ? [] : page_movie.content)"
       (click)="clicked_movie(movie.id)"
     >
-      <td class="ranking-column">{{movie.rank}}</td>
-      <td class="movie-column">{{movie.title}}</td>
-      <td class="year-column">{{movie.year}}</td>
-      <td class="revenue-column">${{movie.revenue}}</td>
+      <td class="ranking-column">{{ movie.rank }}</td>
+      <td class="movie-column">{{ movie.title }}</td>
+      <td class="year-column">{{ movie.year }}</td>
+      <td class="revenue-column">${{ movie.revenue }}</td>
       <td class="eye-column"><fa-icon [icon]="faEye"></fa-icon></td>
     </tr>   
   </table>
