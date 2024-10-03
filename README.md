@@ -1,14 +1,16 @@
-# XpandiIT Challenge
+# Xpand IT - Frontend Challenge 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+This challenge involved developing the frontend of a movie website using Angular, with the UX design and backend API provided. The mandatory requirements included:
+- A complete list of movies that allows users to continuously scroll down, with more movies loading automatically as they reach the bottom, until the entire list is displayed
+- Clicking on a movie in the list triggers a popup displaying detailed information about the selected movie
+- Top 10 movies by revenue and Top 10 movies by revenue in a given year
+
+__NOTE:__ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Start by running `npm install` to install all the required dependencies.
+Next, run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 

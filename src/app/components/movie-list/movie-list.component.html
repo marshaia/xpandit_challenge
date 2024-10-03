@@ -2,10 +2,8 @@
   <!-- PAGE TITLE -->
   <h2 class="title">Movie ranking</h2>
 
-
   <!-- FILTER SECTION -->
-  <app-movie-filters />
-  
+  <app-movie-filters (filterEmitter)="filter_movies($event)" />
 
   <!-- MOVIE TABLE -->
   <table>
@@ -30,9 +28,11 @@
     </tr>   
   </table>
 
+  <!-- LOADING SVG -->
   <div *ngIf="loading" class="loading-container">
     <img alt="Loading SVG" src="assets/svg/loading.svg">
   </div>
 
+  <!-- MOVIE MODAL -->
   <app-movie-modal [isVisible]="showModal" [movie_id]="movie_id" (close)="showModal = false; movie_id = null"></app-movie-modal>
 </main>

@@ -10,10 +10,10 @@
 }
 
 .modal.show {
-  display: flex; /* Show modal when isVisible is true */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  //animation: fadein 0.3s ease-in forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadein 0.3s ease-in forwards;
 }
 @keyframes fadein{
   0%{
@@ -29,7 +29,6 @@
   margin: auto;
   padding: 30px 58px 20px 58px;
   width: 57%;
-  /* offset-x | offset-y | blur-radius | color */
   box-shadow: 0px 20px 40px #01243366;
   max-height: 90%;
   overflow-y: auto;
