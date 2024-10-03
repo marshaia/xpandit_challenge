@@ -1,0 +1,99 @@
+.filter-section {
+  margin: 32px 0px;
+  display: flex;
+  gap: 23px;
+}
+
+.filter-button {
+  border: 1px solid #78849E66;
+  border-radius: 20px;
+  opacity: 1;
+  background-color: #FFFFFF;
+  color: #78849E;
+  text-align: center;
+  font: normal normal 300 12px Roboto;
+  letter-spacing: 0px;
+  padding: 8px 12px;
+}
+
+.active-filter {
+  border: 1px solid #78849E66;
+  background-color: #00BAFF;
+  color: #012433;
+  font: normal normal medium 12px/14px Roboto;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Overlay color */ 
+}
+
+.modal.show {
+  display: block; /* Show modal when isVisible is true */
+  animation: fadein 0.3s ease-out forwards;
+}
+@keyframes fadein{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+.modal-content {
+  background-color: white;
+  margin-left: 510px;
+  margin-top: 136px;
+  padding: 16px 0px 13px 0px;
+  width: 178px;
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 0px 20px 40px #01243366;
+  max-height: 60%;
+  overflow-y: auto;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font: normal normal normal 12px/14px Roboto;
+  letter-spacing: 0px;
+  color: #78849EB9;
+  opacity: 1;
+}
+
+.year {
+  text-align: center;
+  margin-top: 8px;
+  font: normal normal medium 14px/20px Roboto;
+  letter-spacing: 0px;
+  color: #536B7A;
+  opacity: 1;
+}
+
+.top-by-year-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.year:hover {
+  cursor: pointer;
+}
+
+.reset-icon {
+  color: #718FA2;
+  border: none;
+  background-color: white;
+  font-size: 16px;
+}
+.reset-icon:hover {
+  color: black;
+}

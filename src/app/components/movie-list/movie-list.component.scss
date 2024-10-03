@@ -28,28 +28,6 @@
   font-size: 24px;
 }
 
-.filter-section {
-  margin: 32px 0px;
-  display: flex;
-  gap: 16px;
-}
-
-.filter-button {
-  border: 1px solid #78849E66;
-  border-radius: 20px;
-  opacity: 1;
-  background-color: #FFFFFF;
-  color: #78849E;
-  text-align: center;
-  font: normal normal 300 12px Roboto;
-  letter-spacing: 0px;
-  padding: 8px 12px;
-}
-
-.filter-button:hover {
-  background-color: #e8e8e8;
-}
-
 // MOVIE TABLE
 table {
   width: 100%;
@@ -109,7 +87,7 @@ td {
 
 .loading-container {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;

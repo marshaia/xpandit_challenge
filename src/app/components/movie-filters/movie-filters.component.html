@@ -1,0 +1,37 @@
+<section class="filter-section">
+  <button title="Top 10 Revenue" class="filter-button" [class.active-filter]="active_filter === 'top'" (click)="clicked_top_10_revenue()">
+    Top 10 Revenue
+  </button>
+
+  <div class="top-by-year-flex">
+    <button title="Top 10 Revenue per Year" class="filter-button" [class.active-filter]="active_filter === 'top_year'" (click)="clicked_top_revenue_by_year()">
+      Top 10 Revenue {{ filter_year !== null ? filter_year : "per Year" }}
+    </button>
+
+    <button 
+      *ngIf="active_filter === 'top_year' && filter_year !== null"
+      (click)="reset_top_by_year()"
+      class="reset-icon"
+      title="Reset Top 10 Revenue per Year Filter"
+    >
+      <fa-icon [icon]="faReset"></fa-icon>
+    </button>
+  </div>
+
+
+
+  <div class="modal" [class.show]="filter_year_visible" (click)="onOverlayClick($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <p class="modal-title">Select a year</p>
+
+      <p 
+        *ngFor="let i of [6,5,4,3,2,1,0,6,5,4,3,2,1,0]" 
+        (click)="clicked_year(2010 + i)"
+        class="year"
+      >
+        {{ 2010 + i }}
+      </p>
+    </div>
+  </div>
+
+</section>

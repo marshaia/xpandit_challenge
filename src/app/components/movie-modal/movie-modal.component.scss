@@ -13,7 +13,7 @@
   display: flex; /* Show modal when isVisible is true */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  animation: fadein 0.2s ease-in forwards;
+  //animation: fadein 0.3s ease-in forwards;
 }
 @keyframes fadein{
   0%{
@@ -69,6 +69,8 @@
   align-items: end;
   gap: 2px;
   margin-top: 2px;
+  border: none;
+  background-color: white;
 }
 
 .close-icon {
@@ -140,7 +142,8 @@
 
 .loading-container {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

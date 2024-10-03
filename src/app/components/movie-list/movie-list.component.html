@@ -4,15 +4,7 @@
 
 
   <!-- FILTER SECTION -->
-  <section class="filter-section">
-    <button title="Top 10 Revenue" class="filter-button">
-      Top 10 Revenue
-    </button>
-
-    <button title="Top 10 Revenue per Year" class="filter-button">
-      Top 10 Revenue per Year
-    </button>
-  </section>
+  <app-movie-filters />
   
 
   <!-- MOVIE TABLE -->
@@ -42,5 +34,5 @@
     <img alt="Loading SVG" src="assets/svg/loading.svg">
   </div>
 
-  <app-custom-modal [isVisible]="showModal" [movie_id]="movie_id" (close)="showModal = false; movie_id = null"></app-custom-modal>
+  <app-movie-modal [isVisible]="showModal" [movie_id]="movie_id" (close)="showModal = false; movie_id = null"></app-movie-modal>
 </main>

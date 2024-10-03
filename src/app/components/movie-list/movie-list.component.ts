@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomModalComponent } from '../custom-modal/custom-modal.component';
+import { MovieModalComponent } from '../movie-modal/movie-modal.component';
+import { MovieFiltersComponent } from '../movie-filters/movie-filters.component';
 import { ApiService } from '../../services/api.service';
 import { PageMovie } from '../../models/page-movie.model';
 import { Movie } from '../../models/movie.model';
@@ -11,7 +12,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-movie-list',
   standalone: true,
   providers: [ApiService],
-  imports: [CommonModule, FontAwesomeModule, CustomModalComponent],
+  imports: [CommonModule, FontAwesomeModule, MovieModalComponent, MovieFiltersComponent],
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
@@ -21,12 +22,12 @@ export class MovieListComponent implements OnInit {
   page = 0;
   page_size = 10;
   loading = false;
-  hasMoreMoviesToFetch = true;
 
   showModal = false;
   movie_id: string | null = null;
   
   page_movie: PageMovie | null = null;
+  hasMoreMoviesToFetch = true;
   movies: Movie[] = [];
 
 

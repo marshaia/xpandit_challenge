@@ -9,13 +9,13 @@
       <!-- HEADER -->
       <div class="header">
         <h1 class="movie-title">{{ movie.title }}</h1>
-        <div class="close" (click)="closeModal()">
+        <button class="close" (click)="closeModal()">
           <div class="close-hover-flex">
             <p class="hidden-close">CLOSE</p>
             <fa-icon class="close-icon" [icon]="faClose"></fa-icon>
           </div>
           <p class="show-close">CLOSE</p>
-        </div>
+        </button>
       </div>
 
       <!-- DIVIDER -->

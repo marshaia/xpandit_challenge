@@ -7,12 +7,12 @@ import { ApiService } from '../../services/api.service';
 
 @Component({
   standalone: true,
-  selector: 'app-custom-modal',
-  templateUrl: './custom-modal.component.html',
-  styleUrl: './custom-modal.component.scss',
+  selector: 'app-movie-modal',
+  templateUrl: './movie-modal.component.html',
+  styleUrl: './movie-modal.component.scss',
   imports: [FontAwesomeModule, CommonModule]
 })
-export class CustomModalComponent implements OnChanges {
+export class MovieModalComponent implements OnChanges {
   faClose = faX
   loading = false;
   movie: DetailedMovie | null = null;
