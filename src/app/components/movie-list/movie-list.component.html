@@ -15,12 +15,8 @@
   </section>
   
 
-  <div *ngIf="loading" class="loading-container">
-    <img alt="Loading SVG" src="assets/svg/loading.svg">
-  </div>
-
   <!-- MOVIE TABLE -->
-  <table *ngIf="!loading">
+  <table>
     <tr class="header-row">
       <th class="ranking-column">RANKING</th>
       <th class="movie-column">TITLE</th>
@@ -31,7 +27,7 @@
 
     <tr 
       class="movie-row"
-      *ngFor="let movie of (page_movie === null ? [] : page_movie.content)"
+      *ngFor="let movie of movies; trackBy: trackById"
       (click)="clicked_movie(movie.id)"
     >
       <td class="ranking-column">{{ movie.rank }}</td>
@@ -41,6 +37,10 @@
       <td class="eye-column"><fa-icon [icon]="faEye"></fa-icon></td>
     </tr>   
   </table>
+
+  <div *ngIf="loading" class="loading-container">
+    <img alt="Loading SVG" src="assets/svg/loading.svg">
+  </div>
 
   <app-custom-modal [isVisible]="showModal" [movie_id]="movie_id" (close)="showModal = false; movie_id = null"></app-custom-modal>
 </main>

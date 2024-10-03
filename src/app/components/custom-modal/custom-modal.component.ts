@@ -37,7 +37,7 @@ export class CustomModalComponent implements OnChanges {
       })
       .catch(() => {
         this.close.emit()
-        window.alert("Error fetching movie")
+        window.alert("Error fetching movie. Please try again!")
       });
   }
 

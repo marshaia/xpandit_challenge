@@ -1,50 +1,89 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { CustomModalComponent } from '../custom-modal/custom-modal.component';
 import { ApiService } from '../../services/api.service';
 import { PageMovie } from '../../models/page-movie.model';
+import { Movie } from '../../models/movie.model';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
   providers: [ApiService],
-  imports: [CommonModule, FontAwesomeModule, CustomModalComponent, HttpClientModule],
+  imports: [CommonModule, FontAwesomeModule, CustomModalComponent],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss'
+  styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
   faEye = faEye;
-  page_movie: PageMovie | null = null;
-  movie_id: string | null = null;
-  showModal = false;
+  
+  page = 0;
+  page_size = 10;
   loading = false;
+  hasMoreMoviesToFetch = true;
+
+  showModal = false;
+  movie_id: string | null = null;
+  
+  page_movie: PageMovie | null = null;
+  movies: Movie[] = [];
+
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.loading = true;
-    this.fetchAllMovies();
+    this.fetchMovies();
   }
 
-  fetchAllMovies(): void {
-    this.apiService.getMovies<{data: PageMovie}>()
+  fetchMovies(): void {    
+    this.loading = true;
+    this.apiService.getMovies<{data: PageMovie}>([`page=${this.page}`, `size=${this.page_size}`])
       .then(response => { 
-        this.loading = false
-        this.page_movie = response.data
+        this.loading = false;
+        this.page += 1;
+        this.hasMoreMoviesToFetch = !response.data.last;
+
+        this.page_movie = response.data;
+        this.movies = this.movies.concat(response.data.content);
+
+        if (response.data.first) this.checkIfNeedMoreMovies();
       })
       .catch(() => { 
+        this.loading = false;
         window.alert("Error fetching movies. Please try again!") 
       });
   }
 
-  clicked_movie(movie_id: string) {
-    this.movie_id = movie_id
-    this.openModal()
+  checkIfNeedMoreMovies(): void {
+    const movieTableHeight = this.movies.length * 48; // Approximate height per movie row
+    const viewportHeight = window.innerHeight;
+
+    // Fetch more movies if the table height is less than the viewport height
+    if (movieTableHeight < viewportHeight && this.hasMoreMoviesToFetch) {
+      this.fetchMovies(); 
+    }
   }
 
-  openModal() { this.showModal = true }
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    // Fetch more movies when reaching the bottom
+    if (scrollPosition >= pageHeight && !this.loading) {
+      this.fetchMovies(); 
+    }
+  }
+
+  trackById(index: number, movie: Movie): string {
+    return movie.id;
+  }
+
+  clicked_movie(movie_id: string) {
+    this.movie_id = movie_id;
+    this.openModal();
+  }
+
+  openModal() { this.showModal = true; }
 }
