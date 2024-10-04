@@ -49,7 +49,7 @@
 
 .modal-content {
   background-color: white;
-  margin-left: 510px;
+  margin-left: 520px;
   margin-top: 136px;
   padding: 16px 0px 13px 0px;
   width: 178px;
@@ -57,6 +57,18 @@
   box-shadow: 0px 20px 40px #01243366;
   max-height: 60%;
   overflow-y: auto;
+}
+
+@media only screen and (max-width: 480px) {
+  .modal-content {
+    margin-left: 200px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .modal-content {
+    margin-left: 320px;
+  }
 }
 
 .modal-title {
@@ -96,4 +108,11 @@
 }
 .reset-icon:hover {
   color: black;
+}
+
+.loading-container {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

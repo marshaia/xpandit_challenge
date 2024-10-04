@@ -27,7 +27,6 @@ export class MovieListComponent implements OnInit {
   showModal = false;
   movie_id: string | null = null;
   
-  page_movie: PageMovie | null = null;
   hasMoreMoviesToFetch = true;
   movies: Movie[] = [];
 
@@ -38,18 +37,16 @@ export class MovieListComponent implements OnInit {
     this.fetchMovies();
   }
 
-  fetchMovies(): void {    
+  fetchMovies(): void {  
     this.loading = true;
     this.apiService.getMovies<{data: PageMovie}>([`page=${this.page}`, `size=${this.page_size}`])
       .then(response => { 
         this.loading = false;
         this.page += 1;
         this.hasMoreMoviesToFetch = !response.data.last;
-
-        this.page_movie = response.data;
         this.movies = this.movies.concat(response.data.content);
 
-        if (response.data.first) this.checkIfNeedMoreMovies();
+        if (this.hasMoreMoviesToFetch) this.checkIfNeedMoreMovies();
       })
       .catch(() => { 
         this.loading = false;
@@ -62,14 +59,14 @@ export class MovieListComponent implements OnInit {
     const viewportHeight = window.innerHeight;
 
     // Fetch more movies if the table height is less than the viewport height
-    if (movieTableHeight < viewportHeight && this.hasMoreMoviesToFetch) {
+    if (movieTableHeight < viewportHeight) {
       this.fetchMovies(); 
     }
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll(): void {
-    if (!this.has_any_filter_active) {
+    if (!this.has_any_filter_active && this.hasMoreMoviesToFetch) {
       const scrollPosition = window.innerHeight + window.scrollY;
       const pageHeight = document.documentElement.scrollHeight;
 
@@ -82,8 +79,9 @@ export class MovieListComponent implements OnInit {
   }
 
   filter_movies($event: {type: string, year?: number}): void {
-    this.reset_table_pagination();
+    this.page = 0;
     this.movies = [];
+    this.hasMoreMoviesToFetch = true;
 
     switch ($event.type) {
       case 'null':
@@ -108,24 +106,19 @@ export class MovieListComponent implements OnInit {
     this.loading = true;
 
     this.apiService.getMovies<{data: PageMovie}>(params)
-    .then(response => { 
-      this.loading = false;
-      this.movies = this.get_top_movies(10, response.data.content);
-    })
-    .catch(() => { 
-      this.loading = false;
-      window.alert("Error fetching Top 10 Revenue "+ (by_year ?? "per Year") +". Please try again!") 
-    });
+      .then(response => { 
+        this.loading = false;
+        this.movies = this.get_top_movies(10, response.data.content);
+      })
+      .catch(() => { 
+        this.loading = false;
+        window.alert("Error fetching Top 10 Revenue "+ (by_year ?? "per Year") +". Please try again!") 
+      });
   }
 
   get_top_movies(top_size: number, movies: Movie[]): Movie[] {
     const sorted = [...movies].sort((a, b) => b.revenue - a.revenue);
     return sorted.slice(0, top_size);
-  }
-
-  reset_table_pagination() {
-    this.page = 0;
-    this.hasMoreMoviesToFetch = true;
   }
 
   trackById(index: number, movie: Movie): string {

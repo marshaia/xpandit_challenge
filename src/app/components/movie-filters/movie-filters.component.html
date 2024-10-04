@@ -1,8 +1,10 @@
 <section class="filter-section">
+  <!-- TOP 10 REVENUE -->
   <button title="Top 10 Revenue" class="filter-button" [class.active-filter]="active_filter === 'top'" (click)="clicked_top_10_revenue()">
     Top 10 Revenue
   </button>
 
+  <!-- TOP 10 REVENUE BY YEAR -->
   <div class="top-by-year-flex">
     <button title="Top 10 Revenue per Year" class="filter-button" [class.active-filter]="active_filter === 'top_year'" (click)="clicked_top_revenue_by_year()">
       Top 10 Revenue {{ filter_year !== null ? filter_year : "per Year" }}
@@ -24,13 +26,18 @@
     <div class="modal-content" (click)="$event.stopPropagation()">
       <p class="modal-title">Select a year</p>
 
-      <p 
-        *ngFor="let i of [6,5,4,3,2,1,0,6,5,4,3,2,1,0]" 
-        (click)="clicked_year(2010 + i)"
-        class="year"
-      >
-        {{ 2010 + i }}
-      </p>
+      <!-- LOADING SVG -->
+      <div *ngIf="loading" class="loading-container">
+        <img alt="Loading SVG" src="assets/svg/loading.svg">
+      </div>
+
+      <!--  YEAR LIST -->
+      <div *ngIf="!loading">
+        <p *ngFor="let year of year_list" (click)="clicked_year(year)" class="year">
+          {{ year }}
+        </p>
+      </div>
+      
     </div>
   </div>
 
