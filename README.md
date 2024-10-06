@@ -5,7 +5,7 @@ This challenge involved developing the frontend of a movie website using Angular
 - Clicking on a movie in the list triggers a popup displaying detailed information about the selected movie
 - Top 10 movies by revenue and Top 10 movies by revenue in a given year
 
-As an __extra__, I've made all the components responsive (for small, medium and large screens) using CSS media queries.
+As an __extra__, I've made all the components responsive (for small, medium, and large screens) using CSS media queries, and added documentation.
 
 __NOTE:__ This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
