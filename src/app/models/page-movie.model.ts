@@ -15,6 +15,11 @@ export interface Pageable {
   unpaged: boolean,
 }
 
+/**
+ * Interface for the complete information of a movie list request.
+ * 
+ * @interface
+ */
 export interface PageMovie {
   totalPages: number,	
   totalElements: number,

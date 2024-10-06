@@ -1,6 +1,7 @@
 <div class="modal" [class.show]="isVisible" (click)="onOverlayClick($event)">
   <div class="modal-content" (click)="$event.stopPropagation()">
     
+    <!-- LOADING SVG -->
     <div *ngIf="loading" class="loading-container">
       <img alt="Loading SVG" src="assets/svg/loading.svg">
     </div>

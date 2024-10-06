@@ -9,7 +9,7 @@
   <table>
     <tr class="header-row">
       <th class="ranking-column">RANKING</th>
-      <th class="movie-column">TITLE</th>
+      <th class="title-column">TITLE</th>
       <th class="year-column">YEAR</th>
       <th class="revenue-column">REVENUE</th>
       <th class="eye-column"></th>
@@ -21,13 +21,13 @@
       (click)="clicked_movie(movie.id)"
     >
       <td class="ranking-column">{{ movie.rank }}</td>
-      <td class="movie-column">{{ movie.title }}</td>
+      <td class="title-column">{{ movie.title }}</td>
       <td class="year-column">{{ movie.year }}</td>
       <td class="revenue-column">${{ movie.revenue }}</td>
       <td class="eye-column"><fa-icon [icon]="faEye"></fa-icon></td>
     </tr>   
   </table>
-
+  
   <!-- LOADING SVG -->
   <div *ngIf="loading" class="loading-container">
     <img alt="Loading SVG" src="assets/svg/loading.svg">

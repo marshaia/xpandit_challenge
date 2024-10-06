@@ -1,3 +1,8 @@
+/**
+ * Interface for a Movie's complete information.
+ * 
+ * @interface
+ */
 export interface DetailedMovie {
   id: string,
   title: string,

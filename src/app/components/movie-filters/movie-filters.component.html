@@ -1,15 +1,16 @@
 <section class="filter-section">
   <!-- TOP 10 REVENUE -->
-  <button title="Top 10 Revenue" class="filter-button" [class.active-filter]="active_filter === 'top'" (click)="clicked_top_10_revenue()">
+  <button title="Top 10 Revenue Filter" class="filter-button" [class.active-filter]="active_filter === 'top'" (click)="clicked_top_10_revenue()">
     Top 10 Revenue
   </button>
 
   <!-- TOP 10 REVENUE BY YEAR -->
   <div class="top-by-year-flex">
-    <button title="Top 10 Revenue per Year" class="filter-button" [class.active-filter]="active_filter === 'top_year'" (click)="clicked_top_revenue_by_year()">
+    <button title="Top 10 Revenue per Year Filter" class="filter-button" [class.active-filter]="active_filter === 'top_year'" (click)="clicked_top_revenue_by_year()">
       Top 10 Revenue {{ filter_year !== null ? filter_year : "per Year" }}
     </button>
 
+    <!-- RESET TOP 10 REVENUE PER YEAR FILTER BTN -->
     <button 
       *ngIf="active_filter === 'top_year' && filter_year !== null"
       (click)="reset_top_by_year()"
@@ -19,8 +20,6 @@
       <fa-icon [icon]="faReset"></fa-icon>
     </button>
   </div>
-
-
 
   <div class="modal" [class.show]="filter_year_visible" (click)="onOverlayClick($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
@@ -37,8 +36,6 @@
           {{ year }}
         </p>
       </div>
-      
     </div>
   </div>
-
 </section>

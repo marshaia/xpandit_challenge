@@ -19,6 +19,13 @@
   }
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1000px) {
+  .container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
 .title {
   margin-top: 24px;
   text-align: left;
@@ -32,8 +39,19 @@
 // MOVIE TABLE
 table {
   width: 100%;
+  display: block;
+  overflow-x: scroll;
   border-collapse: collapse;
+  white-space: nowrap;
 }
+
+// without this, table would not have 100% width
+@media only screen and (min-width: 768px) {
+  table {
+    display: table;
+  }
+}
+
 th {
   border-bottom: 1px solid #0B749B99;
 }
@@ -66,24 +84,29 @@ td {
 
 .ranking-column {
   width: 10%;
+  min-width: 50px;
   text-align: center;
 }
 
 .title-column {
   width: 50%;
+  min-width: 325px;
 }
 
 .year-column {
   width: 15%;
+  min-width: 80px;
 }
 
 .revenue-column {
   width: 20%;
+  min-width: 120px;
 }
 
 .eye-column {
   width: 5%;
   color: #9AAEBB;
+  min-width: 50px;
 }
 
 .loading-container {
